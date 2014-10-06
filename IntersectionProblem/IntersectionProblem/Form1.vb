@@ -19,15 +19,35 @@ Public Class Form1
             Return
         End If
 
+
         ' Convert to double
         A = CDbl(Ast)
         B = CDbl(Bst)
         C = CDbl(Cst)
         D = CDbl(Dst)
 
-        ' Please write your code here...
+        txtResult.Text = FindIntersection(A, B, C, D)
 
-        txtResult.Text = "Not implemented yet"
     End Sub
 
+    Function FindIntersection(A As Double,
+                              B As Double,
+                              C As Double,
+                              D As Double)
+        Dim result As String
+        If (B < C) Or (D < A) Then
+            result = "No intersection"
+        Else
+            Dim begpoint As Double
+            begpoint = Math.Max(A, C)
+
+            Dim endpoint As Double
+            endpoint = Math.Min(B, D)
+
+            result = "the intersaction is from" & begpoint & "to" & endpoint
+
+        End If
+
+        Return result
+    End Function
 End Class
